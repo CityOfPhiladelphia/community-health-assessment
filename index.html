@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">  
+    <title>Health Dashboard | Phila.gov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <!--  <link rel="shortcut icon" href="http://laurenancona.com/LA-Icon-2014_red_favi.ico" type="image/x-icon"/> -->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="css/style.css" /> 
+    <!-- PureCSS.io for grid & a few other styles; can be combined with Bootstrap or Foundation for additional JS functionality -->
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <!--<![endif]-->
+    <!-- include cartodb.js library -->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+
+    <!-- mapping queries values from CartoDB's SQL API to sidebar --> 
+    <script id="sidebar-tpl" type="text/html"> 
+<!-- div class="cat">Summary Measures</div> -->
+      <dl>
+        <table id="stats-table" class="pure-table">
+          <tbody>
+            <!-- Summary Measures -->
+              <tr>
+                  <td colspan="2"><span class="cat">Summary Measures</span></td>
+              </tr>
+              <tr>
+                  <td><dd>{{unemployment}}</dd></td>
+                  <td><dd>{{poor_or_fair_health}}</dd></td>
+              </tr>
+              <tr>
+                  <td><dt>Unemployment</dt></td>
+                  <td><dt>Poor/Fair Health</dt></td>
+              </tr>
+              <tr>
+                  <td><dd>{{life_expectancy_female}}</dd></td>
+                  <td><dd>{{life_expectancy_male}}</dd></td>
+              </tr>
+              <tr>
+                <td><dt>Life Expectancy, Female</dt></td>
+                <td><dt>Life Expectancy, Male</dt></td>
+               </tr>    
+               <!-- Social determinants -->
+              <tr>
+                  <td colspan="2"><span class="cat">Social Determinants</span></td>
+              </tr>
+              <tr>
+                  <td><dd>{{poverty}}</dd></td>
+                  <td><dd>{{children_living_in_poverty}}</dd></td>
+              </tr>
+              <tr>
+                  <td><dt>Poverty</dt></td>
+                  <td><dt>Children - poverty</dt></td>
+              </tr>
+              <tr>
+                  <td><dd>{{children_in_single_parent_households}}</dd></td>
+                  <td><dd>{{adults_who_have_completed_at_least_some_college}}</dd></td>
+              </tr>
+              <tr>
+                <td><dt>Children - single parent households</dt></td>
+                <td><dt>Adults who have completed at least some college</dt></td>
+               </tr>    
+              <tr>
+                  <td><dd>{{unemployment}}</dd></td>
+                  <td><dd>{{social_capital}}</dd></td>
+              </tr>
+              <tr>
+                <td><dt>Unemployment</dt></td>
+                <td><dt>Social capital</dt></td>
+               </tr> 
+               <!-- Tobacco and Alcohol -->
+              <tr>
+                  <td colspan="2"><span class="cat">Tobacco and Alcohol</span></td>
+              </tr>
+              <tr>
+                  <td><dd>{{adult_smoking_prevalence}}</dd></td>
+                  <td><dd>{{excessive_drinking}}</dd></td>
+              </tr>
+              <tr>
+                  <td><dt>Adult smoking prevalence</dt></td>
+                  <td><dt>Excessive drinking</dt></td>
+              </tr>
+              <tr>
+                  <td><dd>{{youth_smoking_prevalence}}</dd></td>
+                  <td><dd>{{adults_with_diagnosed_mental_condition}}</dd></td>
+              </tr>
+              <tr>
+                <td><dt>Youth smoking prevalence</dt></td>
+                <td><dt>Adults - Mental condition</dt></td>
+               </tr>    
+          </tbody>
+        </table>
+      </dl>
+    </script>
+  </head>
+  
+  <body>
+    <!-- LA Google Tag Manager, of course -->
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W6WFRN"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W6WFRN');</script>
+    <!-- End Google Tag Manager -->
+
+    <div id="wrapper">
+      <div id="map"></div>
+      <div id="sidebar">
+        <section id="name" class="heading">
+          <h1>Health Data Dashboard</h1>
+        </section>
+        <section id="info" class="">
+          <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+<!--                 <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li> -->
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                  <a href="#" id="menuLink1" class="pure-menu-link">Choose a category</a>
+                  <ul class="pure-menu-children">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Social determinants</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Obesity</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">HIV</a></li>
+                  </ul>
+                </li>
+            </ul>
+          </div>
+          <div id="stats">
+          </div> 
+        </section>
+      </div>
+    </div> 
+    <script type="text/javascript" src="js/dropdown.js"></script> 
+    <script type="text/javascript" src="js/main.js"></script> 
+  </body>
+</html>  
+
