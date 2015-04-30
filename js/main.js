@@ -36,9 +36,9 @@ function main() {
     });
     // you can get the native map to work with it
     // depending if you use google maps or leaflet
-    map = vis.getNativeMap();
+    map = vis.getNativeMap()
     // now, perform any operations you need
-    map.setZoom(3)
+    map.setZoom(12);
     // map.setCenter(new google.maps.Latlng(...))
   })
   .error(function(err) {
