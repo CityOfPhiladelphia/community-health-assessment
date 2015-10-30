@@ -16,12 +16,12 @@
       <link rel="stylesheet" href="css/grids-responsive-min.css">
     <!--<![endif]-->
     <!-- include cartodb.js library -->
-    <script src="js/cartodb.js"></script>
+    <script type="text/javascript" src="js/vendor/cartodb.js"></script>
     <!-- templates & formatting our data -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
     <script src="js/vendor/mustache-wax.js"></script>
 
-    <!-- mapping queriy values from CartoDB's SQL API to sidebar --> 
+    <!-- mapping query values from CartoDB's SQL API to sidebar --> 
     <script id="sidebar-tpl" type="text/html"> 
 <!-- div class="cat">Summary Measures</div> -->
       <dl>
@@ -103,12 +103,12 @@
   
   <body>
     <!-- LA Google Tag Manager, of course -->
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W6WFRN"
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W6WFRN"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-W6WFRN');</script>
     <!-- End Google Tag Manager -->
 
