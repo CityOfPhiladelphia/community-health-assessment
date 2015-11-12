@@ -4,11 +4,11 @@ function main() {
       shareable: false ,
       title: false,
       description: false,
-      search: true,
+      search: false,
       tiles_loader: true,
       center_lat: 39.9694197,
       center_lon: -75.1614633,
-      zoom: 9,
+      zoom: 11,
       cartodb_logo: false
   })
   .done(function(vis, layers  ) {
