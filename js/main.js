@@ -1,6 +1,6 @@
 function main() {
   // add link to CartoDB viz.json here
-  cartodb.createVis('map', 'https://lancona.cartodb.com/api/v2/viz/a8570d30-e90c-11e4-82cd-0e853d047bba/viz.json', {
+  cartodb.createVis('map', 'https://lancona.cartodb.com/api/v2/viz/1cf60a70-8943-11e5-ad0c-0e31c9be1b51/viz.json', {
       shareable: false ,
       title: false,
       description: false,
