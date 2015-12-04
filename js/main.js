@@ -8,7 +8,7 @@ function main() {
       tiles_loader: true,
       center_lat: 39.9694197,
       center_lon: -75.1614633,
-      zoom: 10,
+      zoom: 9,
       cartodb_logo: false
     })
     .done(function (vis, layers) {
