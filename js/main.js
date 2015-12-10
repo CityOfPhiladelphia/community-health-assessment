@@ -4,7 +4,7 @@ function main() {
       shareable: false,
       title: false,
       description: false,
-      search: false,
+      search: true,
       tiles_loader: true,
       center_lat: 39.9694197,
       center_lon: -75.1614633,
@@ -12,10 +12,12 @@ function main() {
       cartodb_logo: false
     })
     .done(function (vis, layers) {
+
       // layer 0 is the base layer, layer 1 is cartodb layer
       // setInteraction is disabled by default
       // this needs to be enabled to allow selection of geography
       // to populate data in sidebar
+
       layers[1].setInteraction(true);
       layers[1].on('featureClick', function (e, pos, latlng, data) {
         cartodb.log.log(e, pos, latlng, data);
@@ -40,7 +42,7 @@ function main() {
       // depending if you use google maps or leaflet
       map = vis.getNativeMap()
         // now, perform any operations you need
-      map.setZoom(12);
+      map.setZoom(10);
       // map.setCenter(new google.maps.Latlng(...))
     })
     .error(function (err) {
