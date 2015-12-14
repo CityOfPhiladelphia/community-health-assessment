@@ -24,6 +24,11 @@
 
 <body id="cityofphiladelphia-github-io">
   <style>
+    .right {
+      float: right;
+      text-align: right;
+      margin-bottom: 10px;
+    }
     /* Header Overrides*/
     
     #heading,
@@ -42,6 +47,11 @@
     
     #charts {
       margin-top: 1rem;
+    }
+    /* Tableau Overrides */
+    
+    div.bottom_toolbar .tab-toolbar-container {
+      visibility: hidden!important;
     }
 
   </style>
@@ -64,7 +74,7 @@
             </div>
             <div class="small-18 columns">
               <div class="page-title-container">
-                <a href="#/">
+                <a href="/">
                   <h1 class="page-title">Community Health Explorer</h1>
                   <h2 class="page-subtitle">Department of Public Health</h2>
                 </a>
@@ -99,7 +109,7 @@
         </div>
       </div>
     </header>
-
+    <div id="top"></div>
     <div class="row">
       <div class="small-24 columns">
 
@@ -115,7 +125,9 @@
           </ul>
           <section class="top-bar-section">
             <ul class="right">
-              <li class="has-dropdown"><a href="#/">Category</a>
+              <p style="float: left; margin-right: 20px;">To navigate between measures, use the menus at right to select a primary dimension and category. </p>
+
+              <li class="has-dropdown"><a href="#/">Dimension</a>
                 <ul class="dropdown">
                   <li><a href="index.html">Planning District</a></li>
                   <li><a href="disparity.html">Racial Disparity</a></li>
@@ -123,22 +135,35 @@
                   <li><a href="top10.html">Top 10 Cities</a></li>
                 </ul>
               </li>
-              <!--
-<li class="has-dropdown"><a href="#/">Dropdown 3 levels</a>
+              <li class="has-dropdown">
+                <a href="#/">Category</a>
+                <ul class="dropdown">
+                  <a href="#/"></a>
+                  <li><a href="#">Access to care</a>
+                    <!--
 <ul class="dropdown">
-<li class="has-dropdown"><a href="#/">2nd level with dropdown</a>
-<ul class="dropdown">
-<li><a href="#/">3rd level</a></li>
+  <li><a href="#/">3rd level</a></li>
+</ul>
 -->
-            </ul>
-            </li>
-            </ul>
-            </li>
-            <!--
+                  </li>
+                  <li><a href="#built">Built environment</a></li>
+                  <li><a href="#cancer">Cancer screening & prevention</a></li>
+                  <li><a href="#cardio">Cardiovascular disease</a></li>
+                  <li><a href="#maternal">Child health</a></li>
+                  <li><a href="#hiv">HIV</a></li>
+                  <li><a href="#maternal">Maternal and infant health</a></li>
+                  <li><a href="#obesity">Obesity</a></li>
+                  <li><a href="#social">Social determinants</a></li>
+                  <li><a href="#summary">Summary measures</a></li>
+                  <li><a href="#teen">Teen reproductive health</a></li>
+                  <li><a href="#tobacco">Tobacco and alcohol</a></li>
+                  <li><a href="#violence">Violence and mental health</a></li>
+
+                  <!--
 <li><a href="#/">Link</a></li>
 <li><a href="#/">Link</a></li>
 -->
-            </ul>
+                </ul>
           </section>
         </nav>
       </div>
@@ -148,162 +173,105 @@
       <div class="row">
         <div class="large-24 columns">
           <!-- main content here-->
-
           <div id="charts" class="small-24 columns">
+            <h1>Racial Disparity</h1>
+            <!--Summary Measures-->
+            <div id="summary">
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/Disparity-Summary/SummarySocialDeterminants?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+              <a class="right" href="#top">^ back to top</a>
+            </div>
+            <hr>
+            <!--Maternal-->
+            <div id="maternal" class='tableauPlaceholder'>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/Disparity-MaternalChild/Disparity-MaternalChild?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+            </div>
+            <hr>
+            <!--Social Determinants-->
+            <div id="social" class='tableauPlaceholder'>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="800" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/Disparity-SocialDeterminants/Disparity-Social?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+              <a class="right" href="#top">^ back to top</a>
+            </div>
+            <hr>
+            <!--Cardiovascular-->
+            <div id="cardio" class=' tableauPlaceholder ' style='width: 1004px; height: 869px; '>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="800" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/Disparity-Cardio/Disparity-Cardio?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+              <a class="right" href="#top">^ back to top</a>
+            </div>
+            <hr>
+            <!--Tobacco-->
+            <div id="tobacco" class=' tableauPlaceholder ' style='width: 1004px; height: 869px; '>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="800" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/Disparity-Tobacco/Disparity-TobaccoObesity?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+              <a class="right" href="#top">^ back to top</a>
+            </div>
+            <hr>
 
-            <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
-            <div id="maternal"class='tableauPlaceholder' style='width: 1004px; height: 869px;'>
-              <noscript>
-                <a href='#'><img alt='Disparity-Maternal &amp; Child ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;MaternalInfantHealth&#47;Disparity-MaternalChild&#47;1_rss.png' style='border: none' /></a>
-              </noscript>
-              <object class='tableauViz' width='1004' height='869' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                <param name='site_root' value='' />
-                <param name='name' value='MaternalInfantHealth&#47;Disparity-MaternalChild' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;MaternalInfantHealth&#47;Disparity-MaternalChild&#47;1.png' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='showVizHome' value='no' />
-                <param name='showTabs' value='y' />
-                <param name='bootstrapWhenNotified' value='true' />
-              </object>
-            </div>
-            <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
-            <div id="Maternal" class='tableauPlaceholder' style='width: 100%; height: 869px;'>
-              <noscript>
-                <a href='http:&#47;&#47;www.phila.gov&#47;health'><img alt='HIV &amp; Reproductive Health ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;He&#47;HealthIndicators_2&#47;HIVReproductiveHealth&#47;1_rss.png' style='border: none' /></a>
-              </noscript>
-              <object class='tableauViz' width='1004' height='869' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                <param name='site_root' value='' />
-                <param name='name' value='HealthIndicators_2&#47;HIVReproductiveHealth' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;He&#47;HealthIndicators_2&#47;HIVReproductiveHealth&#47;1.png' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='showVizHome' value='no' />
-                <param name='showTabs' value='y' />
-                <param name='bootstrapWhenNotified' value='true' />
-              </object>
-            </div>
-            <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
+            <!--HIV Adults-->
+            <div id="HIV" class='tableauPlaceholder ' style='width: 1004px; '>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 869px;" src="https://public.tableau.com/views/HealthIndicatorswithMap/Disparity-HIVAdults?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
 
-            <div id="Cardiovascular" class='tableauPlaceholder' style='width: 1004px; height: 869px;'>
-              <noscript>
-                <a href='#'><img alt='Disparity-Cardio ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Di&#47;Disparity-Cardivascular&#47;Disparity-Cardio&#47;1_rss.png' style='border: none' /></a>
-              </noscript>
-              <object class='tableauViz' width='1004' height='869' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                <param name='site_root' value='' />
-                <param name='name' value='Disparity-Cardivascular&#47;Disparity-Cardio' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Di&#47;Disparity-Cardivascular&#47;Disparity-Cardio&#47;1.png' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='showVizHome' value='no' />
-                <param name='showTabs' value='y' />
-                <param name='bootstrapWhenNotified' value='true' />
-              </object>
             </div>
-            <script type='text/javascript' src='https://public.tableau.com/javascripts/api/viz_v1.js'></script>
-            <div id="HIV" class='tableauPlaceholder' style='width: 1004px; height: 1069px;'>
-              <noscript>
-                <a href='#'><img alt='Disparity-HIV Adults ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Di&#47;Disparity-HIVAdults&#47;Disparity-HIVAdults&#47;1_rss.png' style='border: none' /></a>
-              </noscript>
-              <object class='tableauViz' width='1004' height='1069' style='display:none;'>
-                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-                <param name='site_root' value='' />
-                <param name='name' value='Disparity-HIVAdults&#47;Disparity-HIVAdults' />
-                <param name='tabs' value='no' />
-                <param name='toolbar' value='yes' />
-                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Di&#47;Disparity-HIVAdults&#47;Disparity-HIVAdults&#47;1.png' />
-                <param name='animate_transition' value='yes' />
-                <param name='display_static_image' value='yes' />
-                <param name='display_spinner' value='yes' />
-                <param name='display_overlay' value='yes' />
-                <param name='display_count' value='yes' />
-                <param name='showVizHome' value='no' />
-                <param name='showTabs' value='y' />
-                <param name='bootstrapWhenNotified' value='true' />
-              </object>
-            </div>
-
           </div>
-
         </div>
-      </div>
     </article>
-  </div>
-  <!-- End #page -->
-  <!-- Begin Footer -->
-  <footer data-swiftype-index='false' class="site-footer" role="contentinfo">
-    <section class="fat">
-      <div class="row">
-        <div class="large-8 columns">
-          <h1>Government</h1>
-          <nav>
-            <ul>
-              <li><a href="http://alpha.phila.gov">alpha.phila.gov</a></li>
-              <li><a href="http://alpha.phila.gov/departments">Department Directory</a></li>
-              <li><a href="http://www.phila.gov/mayor">Mayor's Office</a></li>
-              <li><a href="http://iframe.publicstuff.com/#?client_id=242">Report an Issue / 311</a></li>
-              <li><a href="http://cityofphiladelphia.wordpress.com/">News</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="large-16 columns">
-          <h1>Browse alpha.phila.gov</h1>
-          <nav>
-            <ul class="columns-2">
-              <li><a href="http://alpha.phila.gov/browse/business">Business</a></li>
-              <li><a href="http://alpha.phila.gov/browse/health">Health</a></li>
-              <li><a href="http://alpha.phila.gov/browse/jobs-and-contracts">Jobs and Contracts</a></li>
-              <li><a href="http://alpha.phila.gov/browse/legal">Legal</a></li>
-              <li><a href="http://alpha.phila.gov/browse/payments-and-taxes">Payments and Taxes</a></li>
-              <li><a href="http://alpha.phila.gov/browse/permits-licenses">Permits and Licenses</a></li>
-              <li><a href="http://alpha.phila.gov/browse/property-housing">Property and Housing</a></li>
-              <li><a href="http://alpha.phila.gov/browse/public-safety">Public Safety</a></li>
-              <li><a href="http://alpha.phila.gov/browse/recreation">Recreation</a></li>
-              <li><a href="http://alpha.phila.gov/browse/streets-and-utilities">Streets and Utilities</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </section>
-    <div class="row classic">
-      <div class="large-6 columns">
-        <a href="#/">Feedback</a>
-      </div>
-      <div class="large-12 columns">
-        <nav>
-          <ul class="inline-list">
-            <li><a href="http://alpha.phila.gov/terms-of-use">Terms of use</a></li>
-            <li><a href="http://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">Right to know (pdf)</a></li>
-            <li><a href="http://alpha.phila.gov/privacypolicy">Privacy Policy</a></li>
-          </ul>
-        </nav>
-      </div>
     </div>
-  </footer>
+    <!-- End #page -->
+    <!-- Begin Footer -->
+    <footer data-swiftype-index='false ' class="site-footer" role="contentinfo">
+      <section class="fat">
+        <div class="row">
+          <div class="large-8 columns">
+            <h1>Government</h1>
+            <nav>
+              <ul>
+                <li><a href="http://alpha.phila.gov">alpha.phila.gov</a></li>
+                <li><a href="http://alpha.phila.gov/departments">Department Directory</a></li>
+                <li><a href="http://www.phila.gov/mayor">Mayor's Office</a>
+                </li>
+                <li><a href="http://iframe.publicstuff.com/#?client_id=242">Report an Issue / 311</a></li>
+                <li><a href="http://cityofphiladelphia.wordpress.com/">News</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="large-16 columns">
+            <h1>Browse alpha.phila.gov</h1>
+            <nav>
+              <ul class="columns-2">
+                <li><a href="http://alpha.phila.gov/browse/business">Business</a></li>
+                <li><a href="http://alpha.phila.gov/browse/health">Health</a></li>
+                <li><a href="http://alpha.phila.gov/browse/jobs-and-contracts">Jobs and Contracts</a></li>
+                <li><a href="http://alpha.phila.gov/browse/legal">Legal</a></li>
+                <li><a href="http://alpha.phila.gov/browse/payments-and-taxes">Payments and Taxes</a></li>
+                <li><a href="http://alpha.phila.gov/browse/permits-licenses">Permits and Licenses</a></li>
+                <li><a href="http://alpha.phila.gov/browse/property-housing">Property and Housing</a></li>
+                <li><a href="http://alpha.phila.gov/browse/public-safety">Public Safety</a></li>
+                <li><a href="http://alpha.phila.gov/browse/recreation">Recreation</a></li>
+                <li><a href="http://alpha.phila.gov/browse/streets-and-utilities">Streets and Utilities</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </section>
+      <div class="row classic">
+        <div class="large-6 columns">
+          <a href="#/">Feedback</a>
+        </div>
+        <div class="large-12 columns">
+          <nav>
+            <ul class="inline-list">
+              <li><a href="http://alpha.phila.gov/terms-of-use">Terms of use</a></li>
+              <li><a href="http://www.phila.gov/privacy/pdfs/FinalCityOpenRecords.pdf">Right to know (pdf)</a></li>
+              <li><a href="http://alpha.phila.gov/privacypolicy">Privacy Policy</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
 
-  <!-- End Footer -->
+    <!-- End Footer -->
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
-  <script src="//cityofphiladelphia.github.io/patterns/dist/0.12.5/js/patterns.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+    <script src="//cityofphiladelphia.github.io/patterns/dist/0.12.5/js/patterns.min.js"></script>
 </body>
 
 </html>
