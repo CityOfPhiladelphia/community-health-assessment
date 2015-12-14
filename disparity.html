@@ -50,22 +50,37 @@
     }
     /* Tableau Overrides */
     
-    div.bottom_toolbar .tab-toolbar-container {
+    div.bottom_toolbar.tab-toolbar-container,
+    .tab-toolbar.tab-fill.tab-widget {
       visibility: hidden!important;
+      display: none!important;
     }
 
   </style>
 
   <!-- Google Tag Manager [phila.gov] -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2"
-                    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <script type="text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                                               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                                                     })(window,document,'script','dataLayer','GTM-MC6CR2');</script>
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <script type="text/javascript">
+    (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MC6CR2');
+
+  </script>
   <!-- End Google Tag Manager -->
-  
+
   <div class="full" id="application">
 
     <!-- Begin .header -->
@@ -188,13 +203,13 @@
             <h1>Racial Disparity</h1>
             <!--Summary Measures-->
             <div id="summary">
-              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/DisparityAccess/DisparityAccess?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 600px;" src="http://public.tableau.com/views/DisparityAccess/DisparityAccess?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
               <a class="right" href="#top"> <i class="fa fa-arrow-up"></i> back to top</a>
             </div>
             <hr>
             <!--Access to Care-->
             <div id="access">
-              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/DisparityAccess/DisparityAccess?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/Disparity-Summary/SummarySocialDeterminants?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
               <a class="right" href="#top"> <i class="fa fa-arrow-up"></i> back to top</a>
             </div>
             <hr>
@@ -205,7 +220,7 @@
             <hr>
             <!--Social Determinants-->
             <div id="social" class='tableauPlaceholder'>
-              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 800px;" src="http://public.tableau.com/views/SocialDisparitybyRace/SocialDisparitybyRace?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
+              <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 550px;" src="http://public.tableau.com/views/Disparity-Summary/Dashboard8?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
               <a class="right" href="#top"> <i class="fa fa-arrow-up"></i> back to top</a>
             </div>
             <hr>
