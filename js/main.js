@@ -1,3 +1,11 @@
+Mustache.Formatters = {
+  "toPerc": function (num) {
+    var perc = num * 100;
+    return (num + "%");
+  }
+};
+
+
 function main() {
   // add link to CartoDB viz.json here
   cartodb.createVis('map', 'https://lancona.cartodb.com/api/v2/viz/a8570d30-e90c-11e4-82cd-0e853d047bba/viz.json', {
