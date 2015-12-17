@@ -6,20 +6,43 @@
   <title>Health Dashboard | Phila.gov</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="canonical" href="">
+  <meta name="description" content="">
+
+  <!--Patterns Components-->
+  <link rel='icon' type='image/x-icon' href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+  <!--Ionicons are optional-->
+  <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <!--pattern stylesheet includes foundation css -->
+  <link rel="stylesheet" href="//cityofphiladelphia.github.io/patterns/dist/0.12.5/css/patterns.css">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
+  <!--CartoDB Styles-->
   <!--    <link rel="stylesheet" href="css/cartodb.css" />-->
   <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+
+  <!--Our styles-->
   <link rel="stylesheet" href="css/style.css" />
+
   <!-- PureCSS.io for grid & a few other styles; can be combined with Bootstrap or Foundation for additional JS functionality -->
-  <link rel="stylesheet" href="css/pure-min.css">
+
+  <!--  <link rel="stylesheet" href="css/pure-min.css">-->
   <!--[if lte IE 8]>
       <link rel="stylesheet" href="css/grids-responsive-old-ie-min.css">
     <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="css/grids-responsive-min.css">
+  <!--  <link rel="stylesheet" href="css/grids-responsive-min.css">-->
   <!--<![endif]-->
+
   <!-- include cartodb.js library -->
   <!--    <script type="text/javascript"  src="js/vendor/cartodb.js"></script>-->
   <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
   <!-- templates & formatting our data -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
   <script src="js/vendor/mustache-wax.js"></script>
@@ -29,12 +52,14 @@
     <!-- div class="cat">Summary Measures</div> -->
     <dl>
       <h1>{{dist_name}}</h1>
-      <table id="stats-table" class="pure-table">
+      <table id="stats-table" role="grid" summary="Indicators by category." class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
         <tbody>
           <!-- Summary Measures -->
-          <tr id="summary">
-            <td colspan="2"><span class="cat">Summary Measures</span></td>
-          </tr>
+          <thead>
+            <tr id="summary">
+              <td colspan="2"><span class="cat">Summary Measures</span></td>
+            </tr>
+          </thead>
           <tr>
             <td>
               <dd>{{unemployment | toPerc}}</dd>
@@ -59,11 +84,16 @@
             <td><dt>Life Expectancy, Female</dt></td>
             <td><dt>Life Expectancy, Male</dt></td>
           </tr>
-          <hr>
-          <!-- Social determinants -->
-          <tr id="social">
-            <td colspan="2"><span class="cat">Social Determinants</span></td>
+          <tr>
+            <td colspan="2" class="nobg"></td>
           </tr>
+
+          <!-- Social determinants -->
+          <thead>
+            <tr id="social">
+              <td colspan="2"><span class="cat">Social Determinants</span></td>
+            </tr>
+          </thead>
           <tr>
             <td>
               <dd>{{poverty | toPerc}}</dd>
@@ -100,10 +130,16 @@
             <td><dt>Unemployment</dt></td>
             <td><dt>Social capital</dt></td>
           </tr>
-          <!-- Tobacco and Alcohol -->
-          <tr id="tobacco">
-            <td colspan="2"><span class="cat">Tobacco and Alcohol</span></td>
+          <tr>
+            <td colspan="2" class="nobg"></td>
           </tr>
+
+          <!-- Tobacco and Alcohol -->
+          <thead>
+            <tr id="tobacco">
+              <td colspan="2"><span class="cat">Tobacco and Alcohol</span></td>
+            </tr>
+          </thead>
           <tr>
             <td>
               <dd>{{adult_smoking_prevalence | toPerc}}</dd>
@@ -128,10 +164,16 @@
             <td><dt>Adults - Mental condition</dt></td>
             <td><dt></dt></td>
           </tr>
-          <!-- Obesity -->
-          <tr id="obesity">
-            <td colspan="2"><span class="cat">Obesity</span></td>
+          <tr>
+            <td colspan="2" class="nobg"></td>
           </tr>
+
+          <!-- Obesity -->
+          <thead>
+            <tr id="obesity">
+              <td colspan="2"><span class="cat">Obesity</span></td>
+            </tr>
+          </thead>
           <tr>
             <td>
               <dd>{{adult_obesity_prevalence | toPerc}}</dd>
@@ -144,10 +186,16 @@
             <td><dt>Adult obesity prevalence</dt></td>
             <td><dt>Adults drinking 1 or more SSBs per day</dt></td>
           </tr>
-          <!-- Cardio -->
-          <tr id="cardio">
-            <td colspan="2"><span class="cat">Cardiovascular Disease</span></td>
+          <tr>
+            <td colspan="2" class="nobg"></td>
           </tr>
+
+          <!-- Cardio -->
+          <thead>
+            <tr id="cardio">
+              <td colspan="2"><span class="cat">Cardiovascular Disease</span></td>
+            </tr>
+          </thead>
           <tr>
             <td>
               <dd>{{premature_cvd_mortality}}</dd>
@@ -164,14 +212,24 @@
             <td>
               <dd>{{diabetes_prevalence | toPerc}}</dd>
             </td>
+            <td>
+              <dd></dd>
+            </td>
           </tr>
           <tr>
             <td><dt>Diabetes prevalence</dt></td>
+            <td><dt></dt></td>
           </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+
           <!-- HIV -->
-          <tr id="hiv">
-            <td colspan="2"><span class="cat">HIV</span></td>
-          </tr>
+          <thead>
+            <tr id="hiv">
+              <td colspan="2"><span class="cat">HIV</span></td>
+            </tr>
+          </thead>
           <tr>
             <td>
               <dd>{{pnew_hiv_diagnoses_by_transmission_type_hetero | toPerc}}</dd>
@@ -201,7 +259,7 @@
               <dd>{{new_hiv_diagnosis_rate}}</dd>
             </td>
             <td>
-              <!--              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>-->
+              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>
             </td>
           </tr>
           <tr>
@@ -213,12 +271,15 @@
               <dd>{{new_hiv_diagnoses_by_transmission_type_msm | toPerc}}</dd>
             </td>
             <td>
-              <!--              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>-->
+              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>
             </td>
           </tr>
           <tr>
             <td><dt>New HIV diagnosis rate</dt></td>
-            <!--            <td><dt>Retention in care</dt></td>-->
+            <td><dt>Retention in care</dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
           </tr>
         </tbody>
       </table>
@@ -230,7 +291,7 @@
 <body>
   <style>
     tr {
-      margin-bottom: 10px;
+      /*      margin-bottom: 10px;*/
     }
 
   </style>
@@ -280,28 +341,15 @@
     <div id="map"></div>
     <div id="sidebar">
       <section id="name" class="heading">
-        <!--          <h1>Health Data Dashboard</h1>-->
       </section>
       <section id="info" class="">
-        <!--           <div class="pure-menu pure-menu-horizontal">
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                  <a href="#" id="menuLink1" class="pure-menu-link">Choose a category</a>
-                  <ul class="pure-menu-children">
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Social determinants</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Obesity</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">HIV</a></li>
-                  </ul>
-                </li>
-            </ul>
-          </div> -->
         <div id="stats">
           <small>Select a planning district to see details</small>
         </div>
       </section>
     </div>
   </div>
-  <script type="text/javascript" src="js/dropdown.js"></script>
+  <!--  <script type="text/javascript" src="js/dropdown.js"></script>-->
   <script type="text/javascript" src="js/main.js"></script>
 </body>
 

@@ -19,7 +19,7 @@ select,
 textarea,
 .pure-g [class *="pure-u"] {
   /* Set your content font stack here: */
-  font-family: Helvetica, sans-serif;
+  /*  font-family: Helvetica, sans-serif;*/
 }
 table {
   border-style: none!important;
@@ -28,35 +28,40 @@ table td {
   /*	text-align: center;
 */
 }
+table thead {}
 p {
-  font-family: 'open sans', sans-serif;
-  color: black;
+  /*  font-family: 'open sans', sans-serif;*/
+  /*  color: black;*/
 }
 h1 {
-  font-family: 'montserrat', sans-serif;
+  /*  font-family: 'montserrat', sans-serif;*/
   margin-top: 0px!important;
-  color: black;
 }
 dl {
   padding: 2px;
-  line-height: 2em;
+  /*  line-height: 1em;*/
 }
 dt {
   /*float: left; 
 	width: 100px; */
   /*	text-align: center;*/
-  font-weight: bold;
+  /*  font-weight: bold;*/
   font-size: .7em;
-  text-transform: uppercase;
-  line-height: 1.1em;
-  margin-top: -14px;
+  /*  text-transform: uppercase;*/
+  line-height: 1.1em!important;
+  /*  margin-top: -14px;*/
   color: black;
 }
 dd {
   /*margin-left: 100px; */
   /*	text-align: center!important;*/
-  font-size: 1.8em;
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-size: 2em!important;
   color: #027ea4;
+}
+.nobg {
+  background: #fff!important;
 }
 #wrapper {
   height: 100%;
@@ -73,7 +78,7 @@ dd {
   position: absolute;
   right: 0px;
   top: 0px;
-  width: 30%;
+  width: 33%;
   height: 100%;
   color: #9299A5;
   background-color: white;
@@ -85,12 +90,12 @@ dd {
   /*	margin-top: 20px;*/
 }
 .cat {
-  margin: 20px 0 8px!important;
+  /*  margin: 30px 0 8px!important;*/
   font-size: 18px;
   font-family: 'montserrat', sans-serif;
   /*	text-align: left;*/
-  color: black;
-  border-bottom: 1px dotted DarkGray;
+  /*  color: black;*/
+  /*  border-bottom: 1px dotted DarkGray;*/
 }
 .heading {
   text-align: center;
