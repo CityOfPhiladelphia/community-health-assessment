@@ -28,18 +28,19 @@
   <script id="sidebar-tpl" type="text/html">
     <!-- div class="cat">Summary Measures</div> -->
     <dl>
+      <h1>{{dist_name}}</h1>
       <table id="stats-table" class="pure-table">
         <tbody>
           <!-- Summary Measures -->
-          <tr>
+          <tr id="summary">
             <td colspan="2"><span class="cat">Summary Measures</span></td>
           </tr>
           <tr>
             <td>
-              <dd>blah blah {{unemployment | toPerc}}</dd>
+              <dd>{{unemployment | toPerc}}</dd>
             </td>
             <td>
-              <dd>{{ poor_or_fair_health }}</dd>
+              <dd>{{poor_or_fair_health | toPerc}}</dd>
             </td>
           </tr>
           <tr>
@@ -58,16 +59,17 @@
             <td><dt>Life Expectancy, Female</dt></td>
             <td><dt>Life Expectancy, Male</dt></td>
           </tr>
+          <hr>
           <!-- Social determinants -->
-          <tr>
+          <tr id="social">
             <td colspan="2"><span class="cat">Social Determinants</span></td>
           </tr>
           <tr>
             <td>
-              <dd>{{poverty}}</dd>
+              <dd>{{poverty | toPerc}}</dd>
             </td>
             <td>
-              <dd>{{children_living_in_poverty}}</dd>
+              <dd>{{children_living_in_poverty | toPerc}}</dd>
             </td>
           </tr>
           <tr>
@@ -76,10 +78,10 @@
           </tr>
           <tr>
             <td>
-              <dd>{{children_in_single_parent_households}}</dd>
+              <dd>{{children_in_single_parent_households | toPerc}}</dd>
             </td>
             <td>
-              <dd>{{adults_who_have_completed_at_least_some_college}}</dd>
+              <dd>{{adults_who_have_completed_at_least_some_college | toPerc}}</dd>
             </td>
           </tr>
           <tr>
@@ -88,10 +90,10 @@
           </tr>
           <tr>
             <td>
-              <dd>{{unemployment}}</dd>
+              <dd>{{unemployment | toPerc}}</dd>
             </td>
             <td>
-              <dd>{{social_capital}}</dd>
+              <dd>{{social_capital | toPerc}}</dd>
             </td>
           </tr>
           <tr>
@@ -99,15 +101,15 @@
             <td><dt>Social capital</dt></td>
           </tr>
           <!-- Tobacco and Alcohol -->
-          <tr>
+          <tr id="tobacco">
             <td colspan="2"><span class="cat">Tobacco and Alcohol</span></td>
           </tr>
           <tr>
             <td>
-              <dd>{{adult_smoking_prevalence}}</dd>
+              <dd>{{adult_smoking_prevalence | toPerc}}</dd>
             </td>
             <td>
-              <dd>{{excessive_drinking}}</dd>
+              <dd>{{excessive_drinking | toPerc}}</dd>
             </td>
           </tr>
           <tr>
@@ -116,24 +118,122 @@
           </tr>
           <tr>
             <td>
-              <dd>{{youth_smoking_prevalence}}</dd>
+              <dd>{{adults_with_diagnosed_mental_condition | toPerc}}</dd>
             </td>
             <td>
-              <dd>{{adults_with_diagnosed_mental_condition}}</dd>
+              <dd></dd>
             </td>
           </tr>
           <tr>
-            <td><dt>Youth smoking prevalence</dt></td>
             <td><dt>Adults - Mental condition</dt></td>
+            <td><dt></dt></td>
+          </tr>
+          <!-- Obesity -->
+          <tr id="obesity">
+            <td colspan="2"><span class="cat">Obesity</span></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{adult_obesity_prevalence | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{adults_drinking_1_or_more_ssbs_per_day | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Adult obesity prevalence</dt></td>
+            <td><dt>Adults drinking 1 or more SSBs per day</dt></td>
+          </tr>
+          <!-- Cardio -->
+          <tr id="cardio">
+            <td colspan="2"><span class="cat">Cardiovascular Disease</span></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{premature_cvd_mortality}}</dd>
+            </td>
+            <td>
+              <dd>{{hypertension_prevalence | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Premature CVD mortality</dt></td>
+            <td><dt>Hypertension prevalence</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{diabetes_prevalence | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Diabetes prevalence</dt></td>
+          </tr>
+          <!-- HIV -->
+          <tr id="hiv">
+            <td colspan="2"><span class="cat">HIV</span></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{pnew_hiv_diagnoses_by_transmission_type_hetero | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_ivdu | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnoses by transmission type: hetero</dt></td>
+            <td><dt>New HIV diagnoses by transmission type: IVDU</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_msm | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnoses by transmission type: MSM</dt></td>
+            <td><dt>New HIV diagnoses by transmission type: Other</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{new_hiv_diagnosis_rate}}</dd>
+            </td>
+            <td>
+              <!--              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>-->
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnosis rate</dt></td>
+            <td><dt>Retention in care</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_msm | toPerc}}</dd>
+            </td>
+            <td>
+              <!--              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>-->
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnosis rate</dt></td>
+            <!--            <td><dt>Retention in care</dt></td>-->
           </tr>
         </tbody>
       </table>
+      <br>
     </dl>
   </script>
 </head>
 
 <body>
+  <style>
+    tr {
+      margin-bottom: 10px;
+    }
 
+  </style>
 
   <!-- Google Tag Manager [phila.gov] -->
   <noscript>
