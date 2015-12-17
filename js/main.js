@@ -1,7 +1,8 @@
 Mustache.Formatters = {
   "toPerc": function (num) {
-    var perc = num * 100;
-    return (num + "%");
+    var n = num * 100;
+    var perc = Math.round(n);
+    return (perc + "%");
   }
 };
 
@@ -16,8 +17,9 @@ function main() {
       tiles_loader: true,
       center_lat: 39.9694197,
       center_lon: -75.1614633,
-      zoom: 9,
-      cartodb_logo: false
+      zoom: 11,
+      cartodb_logo: false,
+      infowindow: false
     })
     .done(function (vis, layers) {
 
@@ -50,7 +52,7 @@ function main() {
       // depending if you use google maps or leaflet
       map = vis.getNativeMap()
         // now, perform any operations you need
-      map.setZoom(10);
+      map.setZoom(12);
       // map.setCenter(new google.maps.Latlng(...))
     })
     .error(function (err) {

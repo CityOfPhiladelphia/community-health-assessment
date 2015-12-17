@@ -1,8 +1,9 @@
-html, body {
-	height: 100%;
-	padding: 0;
-	margin: 0;
-	overflow: hidden;
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 /*
@@ -10,103 +11,96 @@ When setting the primary font stack, apply it to the Pure grid units along
 with `html`, `button`, `input`, `select`, and `textarea`. Pure Grids use
 specific font stacks to ensure the greatest OS/browser compatibility.
 */
-html, button, input, select, textarea,
-.pure-g [class *= "pure-u"] {
-    /* Set your content font stack here: */
-    font-family: Helvetica, sans-serif;
-}
 
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class *="pure-u"] {
+  /* Set your content font stack here: */
+  font-family: Helvetica, sans-serif;
+}
 table {
-	border-style: none!important;
+  border-style: none!important;
 }
-
-table td{
-/*	text-align: center;
-*/}
-
+table td {
+  /*	text-align: center;
+*/
+}
 p {
-	color: #9299A5;
+  font-family: 'open sans', sans-serif;
+  color: black;
 }
-
 h1 {
-	margin-top: 0px!important;
+  font-family: 'montserrat', sans-serif;
+  margin-top: 0px!important;
+  color: black;
 }
-
 dl {
-	padding: 2px;
-	line-height: 2em;
+  padding: 2px;
+  line-height: 2em;
 }
-
-dt { 
-	/*float: left; 
+dt {
+  /*float: left; 
 	width: 100px; */
-/*	text-align: center;*/
-	font-weight: bold;
-	font-size: .7em;
-	text-transform: uppercase;
-	line-height: 1.1em;
-	margin-top: -14px;
-	color: DarkGray;
+  /*	text-align: center;*/
+  font-weight: bold;
+  font-size: .7em;
+  text-transform: uppercase;
+  line-height: 1.1em;
+  margin-top: -14px;
+  color: black;
 }
-
-dd { 
-	/*margin-left: 100px; */
-/*	text-align: center!important;*/
-	font-size: 1.8em;
-	color: #E7494B;
+dd {
+  /*margin-left: 100px; */
+  /*	text-align: center!important;*/
+  font-size: 1.8em;
+  color: #027ea4;
 }
-
 #wrapper {
-	height: 100%;
+  height: 100%;
 }
-
 #map {
-	width: 67%;
-	height:100%;
-	padding: 0;
-	margin: 0;
-	overflow: hidden;
-	z-index: -1000;
+  width: 67%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  z-index: -1000;
 }
-
 #sidebar {
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 30%;
-	height: 100%;
-	color: #9299A5;
-	background-color: white;
-	padding: 20px 20px 0 20px;
-	z-index: 1000;
-	overflow: auto;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 30%;
+  height: 100%;
+  color: #9299A5;
+  background-color: white;
+  padding: 20px 20px 0 20px;
+  z-index: 1000;
+  overflow: auto;
 }
-
 #stats {
-/*	margin-top: 20px;*/
+  /*	margin-top: 20px;*/
 }
-
 .cat {
-	margin: 20px 0 8px!important;
-	font-size: 22px;
-/*	text-align: left;*/
-	color: DarkGray;
-	border-bottom: 1px dotted DarkGray;
+  margin: 20px 0 8px!important;
+  font-size: 18px;
+  font-family: 'montserrat', sans-serif;
+  /*	text-align: left;*/
+  color: black;
+  border-bottom: 1px dotted DarkGray;
 }
-
 .heading {
-	text-align: center;
+  text-align: center;
 }
-
-.pure-menu, .pure-menu-item {
-	color: #9299A5;
-	background-color: #EDF4F7;
+.pure-menu,
+.pure-menu-item {
+  color: #9299A5;
+  background-color: #EDF4F7;
 }
-
 .pure-menu-link {
-	color: #9299A5;
+  color: #9299A5;
 }
-
-.pure-menu-selected .pure-menu-link:visited {
-
-}
+.pure-menu-selected .pure-menu-link:visited {}
