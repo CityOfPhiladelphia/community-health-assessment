@@ -64,7 +64,9 @@ dd {
   background: #fff!important;
 }
 #wrapper {
+  position: fixed;
   height: 100%;
+  width: 100%;
 }
 #map {
   width: 67%;
@@ -76,6 +78,7 @@ dd {
 }
 #sidebar {
   position: absolute;
+  margin-bottom: 100px;
   right: 0px;
   top: 0px;
   width: 33%;
@@ -87,7 +90,8 @@ dd {
   overflow: auto;
 }
 #stats {
-  /*	margin-top: 20px;*/
+  height: auto;
+  margin-bottom: 150px;
 }
 .cat {
   /*  margin: 30px 0 8px!important;*/
