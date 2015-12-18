@@ -6,7 +6,6 @@ Mustache.Formatters = {
   }
 };
 
-
 function main() {
   // add link to CartoDB viz.json here
   cartodb.createVis('map', 'https://lancona.cartodb.com/api/v2/viz/a8570d30-e90c-11e4-82cd-0e853d047bba/viz.json', {
@@ -14,9 +13,9 @@ function main() {
       title: false,
       description: false,
       search: true,
-      tiles_loader: true,
-      center_lat: 39.9694197,
-      center_lon: -75.1614633,
+      tiles_loader: false,
+      center_lat: 39.9765,
+      center_lon: -75.1580,
       zoom: 11,
       cartodb_logo: false,
       infowindow: false
@@ -35,8 +34,12 @@ function main() {
         var sql = new cartodb.SQL({
           user: 'lancona'
         });
-        sql.execute("SELECT * FROM health_dashboard_districts WHERE cartodb_id = {{cartodb_id}}", data)
+        sql.execute("SELECT * FROM health_dashboard_districts WHERE dist_name<>'Lower South' AND cartodb_id = {{cartodb_id}}", data)
           .done(function (data) {
+            vis.addOverlay({
+              type: 'tooltip',
+              template: '<p>{{dist_name}}</p>'
+            });
             var d = data.rows[0];
             var tpl = document.getElementById('sidebar-tpl').innerHTML;
             var output = Mustache.render(tpl, d);
@@ -52,7 +55,7 @@ function main() {
       // depending if you use google maps or leaflet
       map = vis.getNativeMap()
         // now, perform any operations you need
-      map.setZoom(12);
+      map.setZoom(11);
       // map.setCenter(new google.maps.Latlng(...))
     })
     .error(function (err) {
