@@ -11,7 +11,7 @@ function main() {
   cartodb.createVis('map', 'https://lancona.cartodb.com/api/v2/viz/a8570d30-e90c-11e4-82cd-0e853d047bba/viz.json', {
       shareable: false,
       title: false,
-      description: false,
+      description: true,
       search: true,
       tiles_loader: false,
       center_lat: 39.9765,
