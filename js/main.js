@@ -21,6 +21,25 @@ function main() {
       infowindow: false
     })
     .done(function (vis, layers) {
+      var sql = new cartodb.SQL({
+        user: 'lancona'
+      });
+      sql.execute("SELECT * FROM planning_districts_2015_merge WHERE dist_name <> 'Lower South' AND cartodb_id = 20")
+        .done(function (data) {
+          vis.addOverlay({
+            type: 'tooltip',
+            template: '<p>{{dist_name}}</p>'
+          });
+          var d = data.rows[0];
+          var tpl = document.getElementById('sidebar-tpl').innerHTML;
+          var output = Mustache.render(tpl, d);
+          document.getElementById('stats').innerHTML = output;
+          console.log(data.rows);
+        })
+        .error(function (errors) {
+          // errors contains a list of errors
+          console.log("errors:" + errors);
+        })
 
       // layer 0 is the base layer, layer 1 is cartodb layer
       // setInteraction is disabled by default
