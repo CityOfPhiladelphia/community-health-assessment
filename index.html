@@ -57,7 +57,7 @@
             </td>
           </tr>
           <tr>
-            <td><dt>Unemployment</dt></td>
+            <td><dt>Unemployment <small>≥16 years of age</small></dt></td>
             <td><dt>Poor/Fair Health</dt></td>
           </tr>
           <tr>
@@ -193,7 +193,7 @@
             </td>
           </tr>
           <tr>
-            <td><dt>Premature CVD mortality</dt></td>
+            <td><dt>Premature CVD mortality <small>per 100,000 persons</small></dt></td>
             <td><dt>Hypertension prevalence</dt></td>
           </tr>
           <tr>
@@ -251,7 +251,7 @@
             </td>
           </tr>
           <tr>
-            <td><dt>New HIV diagnosis rate</dt></td>
+            <td><dt>New HIV diagnosis rate <small> per 100,000 pop</small></dt></td>
             <td><dt>Retention in care</dt></td>
           </tr>
           <tr>
@@ -272,7 +272,7 @@
           <!-- Teen -->
           <thead>
             <tr id="teen">
-              <td colspan="2"><span class="cat">Teen Reproductive Health</span></td>
+              <td colspan="2"><span class="cat">Teen Reproductive Health <small>15-19 yrs of age</small></span></td>
             </tr>
           </thead>
           <tr>
@@ -284,25 +284,57 @@
             </td>
           </tr>
           <tr>
-            <td><dt>Teen gonorrhea rate</dt></td>
-            <td><dt>Teen chlamydia rate</dt></td>
+            <td><dt>Teen gonorrhea rate <small>per 100,000</small></dt></td>
+            <td><dt>Teen chlamydia rate <small>per 100,000</small></dt></td>
           </tr>
           <tr>
-            <tr>
-              <td>
-                <dd>{{teen_birth_rate}}</dd>
-              </td>
-              <td>
-                <dd></dd>
-              </td>
+            <td>
+              <dd>{{teen_births}}</dd>
+            </td>
+            <td>
+              <dd></dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Teen birth rate <small>per 1,000</small></dt></td>
+            <td><dt></dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+          <!-- Maternal -->
+          <thead>
+            <tr id="maternal">
+              <td colspan="2"><span class="cat">Maternal and infant health</span></td>
             </tr>
-            <tr>
-              <td><dt>Teen birth rate</dt></td>
-              <td><dt></dt></td>
-            </tr>
-            <tr>
-              <td colspan="2" class="nobg"></td>
-            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{infant_mortality_rate}}</dd>
+            </td>
+            <td>
+              <dd>{{low_birth_weight | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Infant mortality rate <small>per 1,000 live births</small></dt></td>
+            <td><dt>Low birth weight <small></small></dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{5_or_more_births | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{late_or_no_prenatal_care | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>5 or more births<small></small></dt></td>
+            <td><dt>Late or no prenatal care</dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
         </tbody>
       </table>
     </dl>
