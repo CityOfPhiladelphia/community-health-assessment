@@ -113,3 +113,8 @@ dd {
   color: #9299A5;
 }
 .pure-menu-selected .pure-menu-link:visited {}
+@media only screen and (min-width: 40.0625em) {
+  .top-bar-section .right li .dropdown {
+    margin-top: 0;
+  }
+}
