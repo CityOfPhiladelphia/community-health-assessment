@@ -34,7 +34,7 @@ function main() {
         var sql = new cartodb.SQL({
           user: 'lancona'
         });
-        sql.execute("SELECT * FROM health_dashboard_districts WHERE dist_name<>'Lower South' AND cartodb_id = {{cartodb_id}}", data)
+        sql.execute("SELECT * FROM health_dashboard_districts WHERE dist_name<>'Lower South [non residential]' AND cartodb_id = {{cartodb_id}}", data)
           .done(function (data) {
             vis.addOverlay({
               type: 'tooltip',
