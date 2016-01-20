@@ -78,9 +78,34 @@
 
   </script>
   <!-- End Google Tag Manager -->
+  
+  <!-- ALPHA ALERT (remove for launch)-->
+  <div id="alpha-alert">
+    <div class="row full">
+      <div class="large-15 columns">
+        <p>This service is in <a href="http://alpha.phila.gov/about/">Alpha</a>: it is a work in progress and may contain errors or inaccuracies.</p>
+        <a class="go-back small-text" href="http://phila.gov" target="_blank">
+          <i class="fa fa-reply"></i> Take me back to Phila.gov<span class="accessible"> Opens in new window</span></a>
+      </div>
+      <div class="large-9 columns contact">
+        <i class="fa fa-comments"></i> <a class="feedback" href="#/" target="_blank">Provide Feedback<span class="accessible"> Opens in new window</span></a>
+        <i class="fa fa-globe"></i>
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en',
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+          }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      </div>
+    </div>
+  </div>
+  <!--END ALERT-->
 
   <div class="full" id="application">
-
     <!-- Begin .header -->
     <!-- Begin header -->
     <header data-swiftype-index='false' class="site-header app" role="banner">
@@ -189,14 +214,14 @@
           <!-- main content here-->
           <h1>Citywide Over Time</h1>
           <!--Summary Measures-->
-          <div id="summary">
+          <div id="summary" class='tableauPlaceholder'>
             <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 660px;" src="http://public.tableau.com/views/CitywideoverTime/Citywide-Summary?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
             <br>
             <a class="right" href="#top"> <i class="fa fa-arrow-up"></i> back to top</a>
           </div>
           <hr>
           <!--Access to Care-->
-          <div id="access">
+          <div id="access" class='tableauPlaceholder'>
             <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" seamless="seamless" allowtransparency="true" width="1004" height="869" style="display: block; margin: 0px; padding: 0px; border: none; width: 1004px; height: 700px;" src="http://public.tableau.com/views/CitywideoverTime/Access-to-care?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=yes&amp;:display_overlay=no&amp;:display_count=no&amp;:showVizHome=no&amp;:showTabs=n&amp;:loadOrderID=0"></iframe>
             <a class="right" href="#top"> <i class="fa fa-arrow-up"></i> back to top</a>
           </div>
