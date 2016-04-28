@@ -1,6 +1,8 @@
 # community-health-explorer
 CartoDB SQL API + Tableau web application for visualization of public health data
 
+**DEPRECATED** for http://cityofphiladelphia.github.io/community-health-explorer
+
 Visualization built for data collected and maintained by the [City of Philadelphia Department of Public Health](http://www.phila.gov/health/index.html). 
 Known as the [Community Health Assessment](http://www.phila.gov/health/commissioner/DataResearch.html), data is collected and published annually.
 
