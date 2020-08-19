@@ -1,143 +1,547 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">  
-    <title>Health Dashboard | Phila.gov</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <!--  <link rel="shortcut icon" href="http://laurenancona.com/LA-Icon-2014_red_favi.ico" type="image/x-icon"/> -->
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
-    <link rel="stylesheet" href="css/style.css" /> 
-    <!-- PureCSS.io for grid & a few other styles; can be combined with Bootstrap or Foundation for additional JS functionality -->
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    <!--[if lte IE 8]>
-      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-      <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
-    <!--<![endif]-->
-    <!-- include cartodb.js library -->
-    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 
-    <!-- mapping queries values from CartoDB's SQL API to sidebar --> 
-    <script id="sidebar-tpl" type="text/html"> 
-<!-- div class="cat">Summary Measures</div> -->
-      <dl>
-        <table id="stats-table" class="pure-table">
-          <tbody>
-            <!-- Summary Measures -->
-              <tr>
-                  <td colspan="2"><span class="cat">Summary Measures</span></td>
-              </tr>
-              <tr>
-                  <td><dd>{{unemployment}}</dd></td>
-                  <td><dd>{{poor_or_fair_health}}</dd></td>
-              </tr>
-              <tr>
-                  <td><dt>Unemployment</dt></td>
-                  <td><dt>Poor/Fair Health</dt></td>
-              </tr>
-              <tr>
-                  <td><dd>{{life_expectancy_female}}</dd></td>
-                  <td><dd>{{life_expectancy_male}}</dd></td>
-              </tr>
-              <tr>
-                <td><dt>Life Expectancy, Female</dt></td>
-                <td><dt>Life Expectancy, Male</dt></td>
-               </tr>    
-               <!-- Social determinants -->
-              <tr>
-                  <td colspan="2"><span class="cat">Social Determinants</span></td>
-              </tr>
-              <tr>
-                  <td><dd>{{poverty}}</dd></td>
-                  <td><dd>{{children_living_in_poverty}}</dd></td>
-              </tr>
-              <tr>
-                  <td><dt>Poverty</dt></td>
-                  <td><dt>Children - poverty</dt></td>
-              </tr>
-              <tr>
-                  <td><dd>{{children_in_single_parent_households}}</dd></td>
-                  <td><dd>{{adults_who_have_completed_at_least_some_college}}</dd></td>
-              </tr>
-              <tr>
-                <td><dt>Children - single parent households</dt></td>
-                <td><dt>Adults who have completed at least some college</dt></td>
-               </tr>    
-              <tr>
-                  <td><dd>{{unemployment}}</dd></td>
-                  <td><dd>{{social_capital}}</dd></td>
-              </tr>
-              <tr>
-                <td><dt>Unemployment</dt></td>
-                <td><dt>Social capital</dt></td>
-               </tr> 
-               <!-- Tobacco and Alcohol -->
-              <tr>
-                  <td colspan="2"><span class="cat">Tobacco and Alcohol</span></td>
-              </tr>
-              <tr>
-                  <td><dd>{{adult_smoking_prevalence}}</dd></td>
-                  <td><dd>{{excessive_drinking}}</dd></td>
-              </tr>
-              <tr>
-                  <td><dt>Adult smoking prevalence</dt></td>
-                  <td><dt>Excessive drinking</dt></td>
-              </tr>
-              <tr>
-                  <td><dd>{{youth_smoking_prevalence}}</dd></td>
-                  <td><dd>{{adults_with_diagnosed_mental_condition}}</dd></td>
-              </tr>
-              <tr>
-                <td><dt>Youth smoking prevalence</dt></td>
-                <td><dt>Adults - Mental condition</dt></td>
-               </tr>    
-          </tbody>
-        </table>
-      </dl>
-    </script>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CHA Report 2015 | phila.gov</title>
+  <link rel='icon' type='image/x-icon' href="//cityofphiladelphia.github.io/patterns/images/favicon.ico">
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!--Ionicons are optional-->
+  <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <!--pattern stylesheet includes foundation css -->
+  <link rel="stylesheet" href="//cityofphiladelphia.github.io/patterns/dist/0.12.5/css/patterns.css">
+
+  <link rel="canonical" href="">
+
+  <!--CartoDB Styles-->
+  <!--    <link rel="stylesheet" href="css/cartodb.css" />-->
+  <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+
+  <!--Map styles-->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- include cartodb.js library -->
+  <!--    <script type="text/javascript"  src="js/vendor/cartodb.js"></script>-->
+  <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
+
+  <!-- templates & formatting our data -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+  <script src="js/vendor/mustache-wax.js"></script>
+
+  <!-- mapping query values from CartoDB's SQL API to sidebar -->
+  <script id="sidebar-tpl" type="text/html">
+    <!-- div class="cat">Summary Measures</div> -->
+    <h1 id="name">{{dist_name}}</h1>
+
+    <dl>
+      <table id="stats-table" role="grid" summary="Indicators by category." class="tablesaw tablesaw-stack" data-tablesaw-mode="stack">
+        <tbody>
+          <!-- Summary Measures -->
+          <thead>
+            <tr id="summary">
+              <td colspan="2"><span class="cat">Summary Measures</span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{unemployment | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{poor_or_fair_health | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Unemployment <small>≥16 years of age</small></dt></td>
+            <td><dt>Poor/Fair Health</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{life_expectancy_female}}</dd>
+            </td>
+            <td>
+              <dd>{{life_expectancy_male}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Life Expectancy, Female</dt></td>
+            <td><dt>Life Expectancy, Male</dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+
+          <!-- Social determinants -->
+          <thead>
+            <tr id="social">
+              <td colspan="2"><span class="cat">Social Determinants</span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{poverty | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{children_living_in_poverty | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Poverty</dt></td>
+            <td><dt>Children - poverty</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{children_in_single_parent_households | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{adults_who_have_completed_at_least_some_college | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Children - single parent households</dt></td>
+            <td><dt>Adults - some college</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{unemployment | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{social_capital | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Unemployment</dt></td>
+            <td><dt>Social capital</dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+
+          <!-- Tobacco and Alcohol -->
+          <thead>
+            <tr id="tobacco">
+              <td colspan="2"><span class="cat">Tobacco and Alcohol</span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{adult_smoking_prevalence | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{excessive_drinking | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Adult smoking prevalence</dt></td>
+            <td><dt>Excessive drinking</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{adults_with_diagnosed_mental_condition | toPerc}}</dd>
+            </td>
+            <td>
+              <dd></dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Adults - Mental condition</dt></td>
+            <td><dt></dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+
+          <!-- Obesity -->
+          <thead>
+            <tr id="obesity">
+              <td colspan="2"><span class="cat">Obesity</span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{adult_obesity_prevalence | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{adults_drinking_1_or_more_ssbs_per_day | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Adult obesity prevalence</dt></td>
+            <td><dt>Adults drinking 1 or more SSBs per day</dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+
+          <!-- Cardio -->
+          <thead>
+            <tr id="cardio">
+              <td colspan="2"><span class="cat">Cardiovascular Disease</span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{premature_cvd_mortality}}</dd>
+            </td>
+            <td>
+              <dd>{{hypertension_prevalence | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Premature CVD mortality <small>per 100,000 persons</small></dt></td>
+            <td><dt>Hypertension prevalence</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{diabetes_prevalence | toPerc}}</dd>
+            </td>
+            <td>
+              <dd></dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Diabetes prevalence</dt></td>
+            <td><dt></dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+
+          <!-- HIV -->
+          <thead>
+            <tr id="hiv">
+              <td colspan="2"><span class="cat">HIV</span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_hetero | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_ivdu | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnoses by transmission type: hetero</dt></td>
+            <td><dt>New HIV diagnoses by transmission type: IVDU</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_msm | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnoses by transmission type: MSM</dt></td>
+            <td><dt>New HIV diagnoses by transmission type: Other</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{new_hiv_diagnosis_rate}}</dd>
+            </td>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnosis rate <small> per 100,000 pop</small></dt></td>
+            <td><dt>Retention in care</dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_msm | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{new_hiv_diagnoses_by_transmission_type_other | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>New HIV diagnosis rate</dt></td>
+            <td><dt>Retention in care</dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+          <!-- Teen -->
+          <thead>
+            <tr id="teen">
+              <td colspan="2"><span class="cat">Teen Reproductive Health <small>15-19 yrs of age</small></span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{teen_gonorrhea_rate}}</dd>
+            </td>
+            <td>
+              <dd>{{teen_chlamydia_rate}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Teen gonorrhea rate <small>per 100,000</small></dt></td>
+            <td><dt>Teen chlamydia rate <small>per 100,000</small></dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{teen_births}}</dd>
+            </td>
+            <td>
+              <dd></dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Teen birth rate <small>per 1,000</small></dt></td>
+            <td><dt></dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+          <!-- Maternal -->
+          <thead>
+            <tr id="maternal">
+              <td colspan="2"><span class="cat">Maternal and infant health</span></td>
+            </tr>
+          </thead>
+          <tr>
+            <td>
+              <dd>{{infant_mortality_rate}}</dd>
+            </td>
+            <td>
+              <dd>{{low_birth_weight | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>Infant mortality rate <small>per 1,000 live births</small></dt></td>
+            <td><dt>Low birth weight <small></small></dt></td>
+          </tr>
+          <tr>
+            <td>
+              <dd>{{_5_or_more_births | toPerc}}</dd>
+            </td>
+            <td>
+              <dd>{{late_or_no_prenatal_care | toPerc}}</dd>
+            </td>
+          </tr>
+          <tr>
+            <td><dt>5 or more births<small></small></dt></td>
+            <td><dt>Late or no prenatal care</dt></td>
+          </tr>
+          <tr>
+            <td colspan="2" class="nobg"></td>
+          </tr>
+        </tbody>
+      </table>
+    </dl>
+  </script>
+</head>
+
+<body id="cityofphiladelphia-github-io">
+  <style>
+    /* Header Overrides*/
+    
+    #heading,
+    .app nav {
+      /*      padding-top: 2rem;*/
+      text-align: left;
+    }
+    
+    .top-bar-section ul {
+      margin-top: 1.2rem;
+    }
+    
+    input[type="text"] {
+      height: auto;
+    }
+    
+    #branding {
+      padding-right: 1rem;
+    }
+    /* Custom Styles */
+    
+    #report-menu {
+      padding-top: 1rem;
+    }
+    
+    #charts {
+      margin-top: 1rem;
+    }
+    
+    @media only screen and (min-width: 40.0625em) {
+      .top-bar-section .right li .dropdown {
+        margin-top: 0;
+      }
+    }
+    
+    #name {
+      position: fixed;
+      width: 100%;
+      height: 70px;
+      float: left;
+      background-color: white;
+      padding-top: 20px;
+      z-index: 1000;
+    }
+    
+    table.tablesaw {
+      padding-top: 20px;
+      position: relative;
+      display: block;
+    }
+  </style>
+
+
+  <!-- Google Tag Manager [phila.gov] -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC6CR2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <script type="text/javascript">
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-MC6CR2');
+  </script>
+  <!-- End Google Tag Manager -->
   
-  <body>
-    <!-- LA Google Tag Manager, of course -->
-      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-W6WFRN"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-      <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-W6WFRN');</script>
-    <!-- End Google Tag Manager -->
+  <!-- ALPHA ALERT (remove for launch)-->
+  <div id="alpha-alert">
+    <div class="row full">
+      <div class="large-15 columns">
+        <p>This service is in <a href="http://alpha.phila.gov/about/">Alpha</a>: it is a work in progress and may contain errors or inaccuracies.</p>
+        <a class="go-back small-text" href="http://phila.gov" target="_blank">
+          <i class="fa fa-reply"></i> Take me back to Phila.gov<span class="accessible"> Opens in new window</span></a>
+      </div>
+      <div class="large-9 columns contact">
+        <i class="fa fa-comments"></i> <a class="feedback" href="#/" target="_blank">Provide Feedback<span class="accessible"> Opens in new window</span></a>
+        <i class="fa fa-globe"></i>
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'en',
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+          }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      </div>
+    </div>
+  </div>
+  <!--END ALERT-->
 
-    <div id="wrapper">
-      <div id="map"></div>
-      <div id="sidebar">
-        <section id="name" class="heading">
-          <h1>Health Data Dashboard</h1>
-        </section>
-        <section id="info" class="">
-          <div class="pure-menu pure-menu-horizontal">
-            <ul class="pure-menu-list">
-<!--                 <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li> -->
-                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                  <a href="#" id="menuLink1" class="pure-menu-link">Choose a category</a>
-                  <ul class="pure-menu-children">
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Social determinants</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Obesity</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">HIV</a></li>
+  <div class="full" id="application">
+    <!-- Begin .header -->
+    <!-- Begin header -->
+    <header data-swiftype-index='false' class="site-header app" role="banner">
+      <div class="row">
+        <div id="heading" class="large-13 columns">
+          <div class="row collapse">
+            <div id="branding" class="small-6 columns">
+              <a href="http://alpha.phila.gov">
+                <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-logo-mobile.png" alt="City of Philadelphia" class="logo show-for-small-only">
+
+                <img src="//cityofphiladelphia.github.io/patterns/images/city-of-philadelphia-logo.png" alt="City of Philadelphia" class="logo show-for-medium-up">
+              </a>
+              <h1 class="site-title">phila.gov</h1>
+              <h2 class="site-description">City of Philadelphia</h2>
+            </div>
+            <div class="small-18 columns">
+              <div class="page-title-container">
+                <a href="/">
+                  <h1 class="page-title">Community Health Explorer</h1>
+                  <h2 class="page-subtitle">Department of Public Health</h2>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="large-11 columns">
+          <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+              <li class="name"></li>
+              <li class="toggle-topbar menu-icon"><a href="#/"><span>Menu</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+              <ul class="right">
+                <li class="has-dropdown"><a href="">Dimension</a>
+                  <ul class="dropdown">
+                    <li><a href="index.html">Planning District</a></li>
+                    <li><a href="disparity.html">Racial Disparity</a></li>
+                    <li><a href="citywide.html">Citywide Over Time</a></li>
+                    <li><a href="top10.html">Top 10 Cities</a></li>
                   </ul>
                 </li>
-            </ul>
+                <li> <a href="" data-reveal-id="modal-name">About</a></li>
+                <li> <a href="http://metadata.phila.gov/#home/datasetdetails/56142af5210dfc8711e84a7f/" target="_blank">Data Dictionary</a>
+                </li>
+              </ul>
+            </section>
+          </nav>
+          <div id="modal-name" class="reveal-modal" data-reveal aria-labelledby="modal-title" aria-hidden="true" role="dialog">
+            <h1 id="modal-title">About the Community Health Assessment</h1>
+            <p>
+              The CHA is a systematic assessment of population health in Philadelphia, highlighting key public health challenges and assets and informing local public health programs, policies, and partnerships.</p>
+            <p>The CHA includes indicators reflecting health behaviors, health conditions, health care factors, and social and environmental determinants of health.</p>
+            <ol>
+              <li>Comparing Philadelphia data to other large cities/counties</li>
+              <li>Looking at Philadelphia data over time, from 2000 to the present</li>
+              <li>Analyzing the latest year of Philadelphia data by race/ethnicity</li>
+              <li>Analyzing the latest year of Philadelphia data by planning districts</li>
+            </ol>
+            <p>The full Community Health Assessment report is <a href="http://www.phila.gov/health/commissioner/DataResearch.html" target="_blank">available for download</a> on the Department of Public Health site.</p>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
           </div>
-          <div id="stats">
-          </div> 
-        </section>
+          <!--
+          <div id="dictionary" class="reveal-modal" data-reveal aria-labelledby="data-dictionary" aria-hidden="true" role="dialog">
+            <h1 id="data-dictionary">Data Dictionary</h1>
+            <iframe seamless="true" width="100%" height="600px" scrolling="auto" frameborder="0" src="http://metadata.phila.gov/#home/datasetdetails/56142af5210dfc8711e84a7f/"></iframe>
+            <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+          </div>
+-->
+        </div>
       </div>
-    </div> 
-    <script type="text/javascript" src="js/dropdown.js"></script> 
-    <script type="text/javascript" src="js/main.js"></script> 
-  </body>
-</html>  
+    </header>
 
+    <div class="row">
+      <div class="small-24 columns">
+        <div class="divider"></div>
+      </div>
+    </div>
+    <article data-swiftype-name="body" data-swiftype-type="text">
+      <div class="row">
+        <!-- main content here-->
+        <div class="small-24 columns">
+          <div id="wrapper">
+            <div id="map"></div>
+            <div id="sidebar">
+              <div id="stats">
+              </div>
+            </div>
+          </div>
+          <script type="text/javascript" src="js/main.js"></script>
+        </div>
+      </div>
+    </article>
+    <!-- End #page -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/foundation/5.5.2/js/foundation.min.js"></script>
+    <script src="//cityofphiladelphia.github.io/patterns/dist/0.12.5/js/patterns.min.js"></script>
+</body>
+
+</html>
